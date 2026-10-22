@@ -52,7 +52,7 @@ src/
   lib/                pure logic: filtering, pagination, URL state, graph layout (with tests)
   state/              reducer, persistence, URL and selection hooks
   components/         resources/, applications/, layout/, common/
-  components/ui/      shadcn/ui components (generated, a couple of small changes)
+  components/ui/      shadcn/ui components
 ```
 
 ## What I'd do next
