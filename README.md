@@ -66,7 +66,7 @@ src/
 
 ## Where I used AI
 
-I used Claude throughout. I started in plan mode, going over the brief and planning the work together, and I made the architecture and product decisions: the stack, React Flow for the graph, the state model, the scope, and what to add beyond the brief. Claude wrote most of the code. I reviewed it, tested every flow in the browser, and sent back what needed fixing.
+I used Claude throughout. I started in plan mode, going over the brief and planning the work together, and I made the architecture and product decisions: the stack, React Flow for the graph, the state model, the scope, and what to add beyond the brief. Claude wrote all of the code , i reviewed it, tested every flow in the browser, and sent back what needed fixing.
 
 Some examples of what I caught along the way:
 - Dragging a node made every node disappear until I let go. The nodes were rebuilt on every frame and lost the size React Flow had measured.
