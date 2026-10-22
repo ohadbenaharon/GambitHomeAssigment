@@ -1,0 +1,142 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "@fontsource-variable/ibm-plex-sans";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+  Tokens. shadcn components read the semantic names (--primary, --border, ...);
+  app code also uses the domain names (--crit-*, --graph-*), so a severity colour
+  is defined exactly once.
+*/
+:root {
+  --radius: 0.5rem;
+
+  --background: #f4f5f7;
+  --foreground: #18202e;
+  --card: #ffffff;
+  --card-foreground: #18202e;
+  --popover: #ffffff;
+  --popover-foreground: #18202e;
+  --primary: #1b2540;
+  --primary-foreground: #ffffff;
+  --secondary: #eceef2;
+  --secondary-foreground: #18202e;
+  --muted: #eceef2;
+  --muted-foreground: #5e6778;
+  --accent: #eef1fb;
+  --accent-foreground: #18202e;
+  --destructive: #c42b1c;
+  --border: #e2e5ea;
+  --input: #d6dae1;
+  --ring: #3651e0;
+
+  --selection: #3651e0;
+  --selection-tint: #f0f3ff;
+
+  --crit-critical: #c42b1c;
+  --crit-high: #d0600e;
+  --crit-medium: #a87a06;
+  --crit-low: #6b7587;
+
+  --provider-aws: #d98200;
+  --provider-gcp: #2f6fde;
+  --provider-azure: #0b8ac9;
+
+  --graph-bg: #121a2b;
+  --graph-dot: #263250;
+  --graph-node: #1a2438;
+  --graph-node-border: #2b3753;
+  --graph-text: #e8ecf4;
+  --graph-muted: #94a0b8;
+  --graph-edge: #4a5a82;
+}
+
+@theme inline {
+  --font-sans: "IBM Plex Sans Variable", ui-sans-serif, system-ui, sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-selection: var(--selection);
+  --color-selection-tint: var(--selection-tint);
+
+  --color-crit-critical: var(--crit-critical);
+  --color-crit-high: var(--crit-high);
+  --color-crit-medium: var(--crit-medium);
+  --color-crit-low: var(--crit-low);
+
+  --color-graph-bg: var(--graph-bg);
+  --color-graph-node: var(--graph-node);
+  --color-graph-node-border: var(--graph-node-border);
+  --color-graph-text: var(--graph-text);
+  --color-graph-muted: var(--graph-muted);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "tnum" 1;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* React Flow on the dark canvas. Scoped under .react-flow to win over its stylesheet, which loads lazily (later). */
+.react-flow.react-flow {
+  --xy-background-color: var(--graph-bg);
+}
+.react-flow .react-flow__controls {
+  box-shadow: none;
+  border: 1px solid var(--graph-node-border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.react-flow .react-flow__controls-button {
+  background: var(--graph-node);
+  border-bottom: 1px solid var(--graph-node-border);
+  fill: var(--graph-text);
+  color: var(--graph-text);
+}
+.react-flow .react-flow__controls-button:hover {
+  background: #24304a;
+}
+.react-flow .react-flow__attribution {
+  background: transparent;
+}
+.react-flow .react-flow__attribution a {
+  color: var(--graph-muted);
+}
